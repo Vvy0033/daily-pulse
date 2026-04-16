@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>YY 的每日全球日报 · 2026年04月16日</title>
+<style>
+/* ── Reset & Base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: #F1F5F9;
+  color: #0F172A;
+  font-family: -apple-system, "PingFang SC", "Noto Sans SC", "Microsoft YaHei", BlinkMacSystemFont, sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* ── Top bar ── */
+.topbar {
+  background: #fff;
+  border-bottom: 1px solid #E2E8F0;
+  padding: 10px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 1px 0 #E2E8F0, 0 2px 8px rgba(0,0,0,0.04);
+}
+.topbar-brand {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0F172A;
+  letter-spacing: -0.3px;
+}
+.topbar-brand span { color: #6366F1; }
+.topbar-time {
+  font-size: 12px;
+  color: #64748B;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.topbar-time .la-badge {
+  background: #EFF6FF;
+  color: #2563EB;
+  border: 1px solid #BFDBFE;
+  border-radius: 6px;
+  padding: 2px 7px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+}
+
+/* ── Hero ── */
+.hero {
+  background: linear-gradient(135deg, #fff 0%, #F8FAFC 100%);
+  border-bottom: 1px solid #E2E8F0;
+  padding: 52px 32px 40px;
+  text-align: center;
+}
+.hero-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #6366F1;
+  margin-bottom: 14px;
+}
+.hero-title {
+  font-size: clamp(28px, 5vw, 52px);
+  font-weight: 900;
+  letter-spacing: -1.5px;
+  color: #0F172A;
+  margin-bottom: 8px;
+  line-height: 1.15;
+}
+.hero-title em {
+  font-style: normal;
+  background: linear-gradient(135deg, #6366F1, #8B5CF6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-sub {
+  font-size: 14px;
+  color: #64748B;
+  margin-bottom: 28px;
+}
+
+/* ── Stats strip ── */
+.stats-strip {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  background: #fff;
+  border-top: 1px solid #E2E8F0;
+  border-bottom: 1px solid #E2E8F0;
+}
+.stat-item {
+  flex: 0 0 auto;
+  padding: 14px 32px;
+  text-align: center;
+  border-right: 1px solid #E2E8F0;
+}
+.stat-item:last-child { border-right: none; }
+.stat-num {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  display: block;
+}
+.stat-label {
+  font-size: 11px;
+  color: #94A3B8;
+  letter-spacing: 0.5px;
+  margin-top: 2px;
+}
+.num-red   { color: #EF4444; }
+.num-amber { color: #F59E0B; }
+.num-blue  { color: #3B82F6; }
+.num-slate { color: #475569; }
+
+/* ── Category Nav ── */
+.cat-nav {
+  background: #fff;
+  border-bottom: 1px solid #E2E8F0;
+  padding: 0 32px;
+  display: flex;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.cat-nav::-webkit-scrollbar { display: none; }
+.nav-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748B;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  white-space: nowrap;
+  transition: color .15s, border-color .15s;
+}
+.nav-pill:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.nav-cnt {
+  background: #F1F5F9;
+  color: #94A3B8;
+  border-radius: 10px;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 1px 6px;
+  min-width: 18px;
+  text-align: center;
+}
+
+/* ── Main content ── */
+.content {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 40px 24px 80px;
+}
+
+/* ── Section ── */
+.domain-section { margin-bottom: 48px; }
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #E2E8F0;
+}
+.section-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.section-title {
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  color: #0F172A;
+}
+.section-count {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  letter-spacing: 0.3px;
+}
+
+/* ── Card Grid ── */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 18px;
+}
+
+/* ── Card ── */
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #fff;
+  border: 1px solid #E8EDF4;
+  border-radius: 16px;
+  padding: 22px 24px;
+  text-decoration: none;
+  color: inherit;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform .2s ease, box-shadow .2s ease;
+  position: relative;
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.10), 0 2px 6px rgba(0,0,0,0.06);
+  border-color: #CBD5E1;
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  padding: 3px 9px;
+  border-radius: 20px;
+  border: 1px solid;
+  white-space: nowrap;
+}
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+.source-label {
+  font-size: 11px;
+  color: #94A3B8;
+  margin-left: auto;
+  font-weight: 500;
+}
+
+.card-title {
+  font-size: 15.5px;
+  font-weight: 800;
+  line-height: 1.5;
+  color: #0F172A;
+  letter-spacing: -0.2px;
+  border-left: 3px solid var(--accent, #6366F1);
+  padding-left: 10px;
+}
+
+/* ── Bullet Points ── */
+.bullets {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  padding: 12px 14px;
+  background: #F8FAFC;
+  border-radius: 10px;
+}
+.bullets li {
+  font-size: 13px;
+  color: #334155;
+  line-height: 1.6;
+  padding-left: 14px;
+  position: relative;
+}
+.bullets li::before {
+  content: "·";
+  position: absolute;
+  left: 0;
+  color: #94A3B8;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 1.4;
+}
+
+.core-fallback {
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.65;
+  padding: 10px 12px;
+  background: #F8FAFC;
+  border-radius: 10px;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 4px;
+}
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+.tag {
+  font-size: 11px;
+  padding: 2px 9px;
+  background: #F1F5F9;
+  color: #475569;
+  border-radius: 20px;
+  border: 1px solid #E2E8F0;
+  font-weight: 500;
+}
+.read-link {
+  font-size: 12px;
+  color: #94A3B8;
+  white-space: nowrap;
+  transition: color .15s;
+  font-weight: 600;
+}
+.card:hover .read-link { color: #6366F1; }
+
+/* ── Footer ── */
+.footer {
+  text-align: center;
+  padding: 32px 24px;
+  color: #94A3B8;
+  font-size: 12px;
+  line-height: 2;
+  border-top: 1px solid #E2E8F0;
+  background: #fff;
+}
+.footer strong { color: #64748B; }
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .topbar { padding: 10px 16px; }
+  .hero { padding: 36px 16px 28px; }
+  .stats-strip { gap: 0; }
+  .stat-item { padding: 12px 16px; }
+  .cat-nav { padding: 0 16px; }
+  .content { padding: 24px 12px 60px; }
+  .card-grid { grid-template-columns: 1fr; }
+  .topbar-time .la-time-text { display: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- Top bar -->
+<header class="topbar">
+  <div class="topbar-brand">YY 的<span>每日全球日报</span></div>
+  <div class="topbar-time">
+    <span class="la-time-text">生成于</span>
+    <span class="la-badge">LA Time</span>
+    <span>04/16/2026 12:39 AM</span>
+  </div>
+</header>
+
+<!-- Hero -->
+<div class="hero">
+  <p class="hero-eyebrow">Daily · Global · Digest</p>
+  <h1 class="hero-title">YY 的<em>每日全球日报</em></h1>
+  <p class="hero-sub">2026年04月16日 周四 · 全球精选 25 条要闻</p>
+</div>
+
+<!-- Stats strip -->
+<div class="stats-strip">
+  <div class="stat-item">
+    <span class="stat-num num-red">3</span>
+    <div class="stat-label">重磅 P0</div>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num num-amber">18</span>
+    <div class="stat-label">重要 P1</div>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num num-blue">4</span>
+    <div class="stat-label">关注 P2</div>
+  </div>
+  <div class="stat-item">
+    <span class="stat-num num-slate">25</span>
+    <div class="stat-label">今日精选</div>
+  </div>
+</div>
+
+<!-- Category nav -->
+<nav class="cat-nav"><a class="nav-pill" href="#section-国际"
+          style="--accent:#2563EB;">国际<span class="nav-cnt">6</span></a><a class="nav-pill" href="#section-财经"
+          style="--accent:#059669;">财经<span class="nav-cnt">7</span></a><a class="nav-pill" href="#section-科技"
+          style="--accent:#7C3AED;">科技<span class="nav-cnt">7</span></a><a class="nav-pill" href="#section-政治"
+          style="--accent:#DC2626;">政治<span class="nav-cnt">2</span></a><a class="nav-pill" href="#section-科学"
+          style="--accent:#0891B2;">科学<span class="nav-cnt">2</span></a><a class="nav-pill" href="#section-社会"
+          style="--accent:#EA580C;">社会<span class="nav-cnt">1</span></a></nav>
+
+<!-- Main content -->
+<main class="content">
+  
+    <section class="domain-section" id="section-国际">
+      <div class="section-header" style="--accent:#2563EB;--bg:#EFF6FF;">
+        <span class="section-dot" style="background:#2563EB;"></span>
+        <h2 class="section-title">国际</h2>
+        <span class="section-count" style="color:#2563EB;background:#EFF6FF;">6 条</span>
+      </div>
+      <div class="card-grid">
+        
+      <a class="card" href="https://wallstreetcn.com/articles/3770126" target="_blank" rel="noopener">
+        <div class="card-meta">
+          <span class="badge" style="background:#FEF2F2;color:#DC2626;border-color:#FECACA;">
+            <span class="dot" style="background:#EF4444;"></span>P0 重磅
+          </span>
+          <span class="source-label">华尔街见闻</span>
+        </div>
+        <h3 class="card-title" style="--accent:#2563EB;">美国封锁霍尔木兹海峡第三天：伊朗相关船只绕道驶入波斯湾</h3>
+        <ul class="bullets"><li>**最新动态**：美国对霍尔木兹海峡实施封锁进入第三天，至少两艘受美国制裁的伊朗相关油轮绕道阿联酋水道，成功进入波斯湾</li><li>**封锁效果**：过境船只骤降——封锁前日均16艘，周二仅11艘，但伊朗已开始启用南部港口以外的替代航道规避封锁</li><li>**影响研判**：封锁未能完全切断通行，伊朗绕道能力超出市场预期，短期油价压力或低于初期担忧，但局势仍高度不稳定</li></ul>
+        <div class="card-footer">
+          <div class="tags"><span class="tag">霍尔木兹封锁</span><span class="tag">伊朗石油</span><span class="tag">中东局势</span></div>
+          <span class="read-link">阅读原文 →</span>
+        </div>
+      </a>
+      <a class="card" href="https://www.bbc.com/news/articles/c4g44gj7rgno" target="_blank" rel="noopener">
+        <div class="card-meta">
+          <span class="badge" style="background:#FEF2F2;color:#DC2626;border-color:#FECACA;">
+            <span class="dot" style="background:#EF4444;"></span>P0 重磅
+          </span>
+          <span class="source-label">BBC World</span>
+        </div>
+        <h3 class="card-title" style="--accent:#2563EB;">伊朗停火危机：美伊外交斡旋白热化，各方焦虑核协议能否达成</h3>
+        <ul class="bullets"><li>**核心局势**：以色列-伊朗停火协议极为脆弱，BBC首席国际记者从德黑兰前线发回报道，美伊外交谈判正进入最关键阶段</li><li>**谈判分歧**：美伊双方在核计划限制细节上存在重大分歧，伊朗内部强硬派与改革派之间对谈判立场存在明显撕裂</li><li>**风险评估**：若谈判在未来数周内破裂，中东局势将全面升级，波斯湾航运与全球能源价格将迎来剧烈波动</li></ul>
+        <div class="card-footer">
+          <div class="tags"><span class="tag">美伊谈判</span><span class="tag">伊朗停火</span><span class="tag">中东外交</span></div>
+          <span class="read-link">阅读原文 →</span>
+        </div>
+      </a>
+      <a class="card" href="https://www.bbc.com/news/articles/cdxkk1vnp57o" target="_blank" rel="noopener">
+        <div class="card-meta">
+          <span class="badge" style="background:#FEF2F2;color:#DC2626;border-color:#FECACA;">
+            <span class="dot" style="background:#EF4444;"></span>P0 重磅
+          </span>
+          <span class="source-label">BBC World</span>
+        </div>
+        <h3 class="card-title" style="--accent:#2563EB;">卫星图像曝光：以色列正系统性摧毁黎巴嫩南部城镇</h3>
+        <ul class="bullets"><li>**数据核实**：BBC Verify 分析高清卫星图像，确认3月2日以来超过1400栋建筑遭摧毁，多处城镇被完全夷平</li><li>**行为模式**：破坏呈高度系统性，覆盖范围超出军事目标，国际法学者认为此行为可能触及战争罪的法律定义</li><li>**国际反应**：多国政府和联合国已要求以色列作出解释，这一证据将成为后续国际法庭追责的关键材料</li></ul>
+        <div class="card-footer">
+          <div class="tags"><span class="tag">以色列</span><span class="tag">黎巴嫩</span><span class="tag">战争罪调查</span></div>
+          <span class="read-link">阅读原文 →</span>
+        </div>
+      </a>
+      <a class="card" href="https://www.bbc.com/news/articles/cn088n9e6e9o" target="_blank" rel="noopener">
+        <div class="card-meta">
+          <span class="badge" style="background:#FFFBEB;color:#D97706;border-color:#FDE68A;">
+            <span class="dot" style="background:#F59E0B;"></span>P1 重要
+          </span>
+          <span class="source-label">BBC World</span>
+        </div>
+        <h3 class="card-title" style="--accent:#2563EB;">土耳其两天之内两起校园枪击案，第二起造成9人罹难</h3>
+        <ul class="bullets"><li>**事件概况**：土耳其内政部长确认，第二起校园枪击案导致8名学生、1名教师共9人死亡，系两日内发生的第二起类似事件</li><li>**安全震动**：连续枪击案在土耳其引发严重社会恐慌，总统埃尔多安紧急召集安全会议，各大城市学校进入临时戒备状态</li><li>**深层问题**：土耳其校园枪击事件历史上较为罕见，此次连发事件引发各界对非法枪支管控和青少年心理健康问题的广泛讨论</li></ul>
+        <div class="card-footer">
+          <div class="tags"><span class="tag">土耳其枪击</span><span class="tag">校园安全</span><span class="tag">社会治安</span></div>
+          <span class="read-link">阅读原文 →</span>
+        </div>
+      </a>
+      <a class="card" href="https://www.wsj.com/articles/suspected-sabotage-of-deep-sea-cable-triggers-first-nato-led-response-337119ba" target="_blank" rel="noopener">
+        <div class="card-meta">
+          <span class="badge" style="background:#FFFBEB;color:#D97706;border-color:#FDE68A;">
+            <span class="dot" style="background:#F59E0B;"></span>P1 重要
+          </span>
+          <span class="source-label">WSJ World</span>
+        </div>
+        <h3 class="card-title" style="--accent:#2563EB;">北约首次协调应对深海电缆蓄意破坏事件，集体防御进入新阶段</h3>
+        <ul class="bullets"><li>**历史首次**：波罗的海海底电缆再遭切断后，北约启动史上首次针对关键基础设施蓄意破坏的多国协调应对机制</li><li>**威胁升级**：情报显示，多国已发现针对海底电缆、管道等关键基础设施的系统性破坏行动，被认为是混合战争的组成部分</li><li>**战略意义**：此次协调行动确立了北约在非武装冲突领域的新防御边界，但如何界定触发第五条款的门槛仍是争议焦点</li></ul>
+        <div class="card-footer">
+          <div class="tags"><span class="tag">北约</span><span class="tag">海底电缆</span><span class="tag">混合战争</span></div>
+          <span class="read-link">阅读原文 →</span>
+        </div>
+      </a>
+      <a class="card" href="https://www.ft.com/content/6d977b3a-1349-4d27-9d8b-ede7faabcb81" target="_blank" rel="noopener">
+        <div class="card-meta">
+          <span class="badge" style="background:#FFFBEB;color:#D97706;border-color:#FDE68A;">
+            <span class="dot" style="background:#F59E0B;"></span>P1 重要
+          </span>
+          <span class="source-label">Financial Times</span>
+        </div>
+        <h3 class="card-title" style="--accent:#2563EB;">以黎停火协议有望近期落地，或为美伊核谈判打开突破口</h3>
+        <ul class="bullets"><li>**谈判进展**：黎巴嫩政府官员表示以黎停火协议已进入收尾阶段，时间线较此前预期明显提前</li><li>**多米诺效应**：以黎停火将直接解除伊朗在黎代理势力的军事顾虑，为美伊核协议谈判营造更有利的外部环境</li><li>**变数所在**：真主党方面对协议核心条款仍持保留态度，黎巴嫩国内政治碎片化可能导致最终签署时间推迟</li></ul>
+        <div class="card-footer">
+          <div class="tags"><span class="tag">以黎停火</span><span class="tag">美伊谈判</span><span class="tag">中东和平</span></div>
+          <span class="read-link">阅读原文 →</span>
+        </div>
+      </a>
+      </div>
+    </section>
+
+    <section class="domain-section" id="section-财经">
+      <div class="section-header" style="--accent:#059669;--bg:#ECFDF5;">
+        <span class="section-dot" style="background:#059669;"></span>
+        <h2 class="section-title">财经</h2>
+        <span class="section-count" style="color:#059669;background:#ECFDF5;">7 条</span>
+      </div>
+      <div class="card-grid">
+        
+      <a class="card" href="https://www.bloomberg.com/news/articles/2026-04-15/asian-stocks-to-gain-as-us-iran-mull-peace-deal-markets-wrap" target="_blank" rel="noopener">
+        <div class="card-meta">
+          <span class="badge" style="background:#FFFBEB;color:#D97706;border-color:#FDE68A;">
+            <span class="dot" style="background:#F59E0B;"></span>P1 重要
+          </span>
+          <span class="source-label">Bloomberg</span>
+        </div>
+        <h3 class="card-title" style="--accent:#059669;">标普500触7022点历史新高，TSMC乐观展望点燃全球科技股</h3>
+        <ul class="bullets"><li>**行情概要**：台积电发布强劲业绩预期后，全球股市普涨，标普500指数盘中触及7022点历史高位，纳指涨幅超1.8%</li><li>**核心驱动**：台积电指AI芯片需求超出预期，并上调全年指引，市场将此解读为AI资本开支周期尚未结束的强烈信号</li><li>**市场隐忧**：高盛同日警告美股已涨过头，建议布局跨资产对冲，提示地缘风险再度升级可能导致快速回调</li></ul>
+        <div class="card-footer">
+          <div class="tags"><span class="tag">标普新高</span><span class="tag">台积电</span><span class="tag">AI投资周期</span></div>
+          <span class="read-link">阅读原文 →</span>
+        </div>
+      </a>
+      <a class="card" href="https://api3.cls.cn/share/article/2346114?os=web&sv=8.4.6&app=CailianpressWeb" target="_blank" rel="noopener">
+        <div class="card-meta">
+          <span class="badge" style="background:#FFFBEB;color:#D97706;border-color:#FDE68A;">
+            <span class="dot" style="background:#F59E0B;"></span>P1 重要
+          </span>
+          <span class="source-label">财联社</span>
+        </div>
+        <h3 class="card-title" style="--accent:#059669;">台积电法说会：AI需求极为强劲，未来三年资本支出将远超过去三年</h3>
+        <ul class="bullets"><li>**核心展望**：台积电CEO魏哲家在法说会上表示AI芯片需求极为强劲，公司未来三年资本支出规模将显著高于过去三年</li><li>**风险预警**：台积电同时指出密切关注零组件价格上涨影响，中东局势带来额外不确定性，已建置风险管理系统应对</li><li>**行业意义**：全球最先进芯片代工厂的乐观表态，是AI基础设施建设周期远未结束的最权威背书，利好英伟达、AMD等设计厂商</li></ul>
+        <div class="card-footer">
+          <div class="tags"><span class="tag">台积电</span><span class="tag">AI资本支出</span><span class="tag">芯片需求</span></div>
+          <span class="read-link">阅读原文 →</span>
+        </div>
+      </a>
+      <a class="card" href="https://api3.cls.cn/share/article/2346110?os=web&sv=8.4.6&app=CailianpressWeb" target="_blank" rel="noopener">
+        <div class="card-meta">
+          <span class="badge" style="background:#FFFBEB;color:#D97706;border-color:#FDE68A;">
+            <span class="dot" style="background:#F59E0B;"></span>P1 重要
+          </span>
+          <span class="source-label">财联社</span>
+        </div>
+        <h3 class="card-title" style="--accent:#059669;">宁德时代一季度营收暴增52%，净利润207亿元再创新高</h3>
+        <ul class="bullets"><li>**业绩亮点**：宁德时代一季度营收1291亿元、同比增长52.45%，归母净利润207亿元、同比增长48.52%，超出市场预期</li><li>**增长驱动**：储能业务爆发式增长叠加海外市场持续扩张，为宁德时代提供了超越国内电动车周期的第二增长曲线</li><li>**行业信号**：龙头强劲业绩表明动力电池价格战触底后行业盈利能力正在修复，新一轮技术升级投入周期即将开启</li></ul>
+        <div class="card-footer">
+          <div class="tags"><span class="tag">宁德时代</span><span class="tag">动力电池</span><span class="tag">一季报</span></div>
+          <span class="read-link">阅读原文 →</span>
+        </div>
+      </a>
+      <a class="card" href="https://wallstreetcn.com/articles/3770123" target="_blank" rel="noopener">
+        <div class="card-meta">
+          <span class="badge" style="background:#FFFBEB;color:#D97706;border-color:#FDE68A;">
+            <span class="dot" style="background:#F59E0B;"></span>P1 重要
+          </span>
+          <span class="source-label">华尔街见闻</span>
+        </div>
+        <h3 class="card-title" style="--accent:#059669;">高盛警告：美股已涨过头，抛出6笔跨资产对冲交易建议</h3>
+        <ul class="bullets"><li>**警告信号**：高盛交易员Tom Shea指出，标普500触7022点时市场情绪已过度乐观，当前是布局对冲的时机而非追涨窗口</li><li>**两大风险**：高盛针对地缘风险再度升级、以及去风险化持续同时增长放缓两种情景，分别设计了具体的对冲交易组合</li><li>**操作建议**：包括做多防御性资产、买入期权保护、配置大宗商品等6笔具体跨资产对冲交易，供机构投资者参考</li></ul>
+        <div class="card-footer">
+          <div class="tags"><span class="tag">高盛</span><span class="tag">美股对冲</span><span class="tag">风险预警</span></div>
+          <span class="read-link">阅读原文 →</span>
+        </div>
+      </a>
+      <a class="card" href="https://www.wsj.com/articles/even-chinas-property-stalwart-isnt-immune-from-the-crisis-19799863" target="_blank" rel="noopener">
+        <div class="card-meta">
+          <span class="badge" style="background:#FFFBEB;color:#D97706;border-color:#FDE68A;">
+            <span class="dot" style="background:#F59E0B;"></span>P1 重要
+          </span>
+          <span class="source-label">WSJ</span>
+        </div>
+        <h3 class="card-title" style="--accent:#059669;">中国头部房企万科报告巨额亏损，地产危机蔓延担忧再度升温</h3>
+        <ul class="bullets"><li>**业绩披露**：万科公布重大亏损数据，作为此前被视为中国地产危机中相对稳健的龙头企业，其陷入困境引发市场高度警觉</li><li>**系统性风险**：万科出问题意味着地产危机已不局限于恒大、碧桂园等高杠杆开发商，向相对稳健的国资背景企业蔓延</li><li>**政策期待**：市场押注中国政府将被迫加大托底力度，但如何在不引发道德风险的前提下救助国资房企，将是重大政策难题</li></ul>
+        <div class="card-footer">
+          <div class="tags"><span class="tag">万科</span><span class="tag">地产危机</span><span class="tag">中国经济</span></div>
+          <span class="read-link">阅读原文 →</span>
+        </div>
+      </a>
+      <a class="card" href="https://36kr.com/p/3768928312001028?f=rss" target="_blank" rel="noopener">
+        <div class="card-meta">
+          <span class="badge" style="background:#FFFBEB;color:#D97706;border-color:#FDE68A;">
+            <span class="dot" style="background:#F59E0B;"></span>P1 重要
+          </span>
+          <span class="source-label">36氪</span>
+        </div>
+        <h3 class="card-title" style="--accent:#059669;">北上广深同步回暖：一线城市楼市小阳春成色超预期</h3>
+        <ul class="bullets"><li>**数据表现**：3月国家统计局数据显示，上海、广州、深圳新房价格全部环比上涨，北京持平，一线二手房四城全线转正</li><li>**政策效果**：多轮限购松绑、降首付、降利率的政策组合拳在一线城市开始见效，但二三线城市仍处于下行通道中</li><li>**持续性存疑**：分析人士认为小阳春更多反映政策刺激的短期效果，需观察下半年需求是否能在无政策刺激下自发维持</li></ul>
+        <div class="card-footer">
+          <div class="tags"><span class="tag">楼市回暖</span><span class="tag">一线城市</span><span class="tag">房地产</span></div>
+          <span class="read-link">阅读原文 →</span>
+        </div>
+      </a>
+      <a class="card" href="https://www.bloomberg.com/news/articles/2026-04-16/easyjet-shares-slump-amid-warning-of-loss-driven-by-iran-war" target="_blank" rel="noopener">
+        <div class="card-meta">
+          <span class="badge" style="background:#EFF6FF;color:#2563EB;border-color:#BFDBFE;">
+            <span class="dot" style="background:#3B82F6;"></span>P2 关注
+          </span>
+          <span class="source-label">Bloomberg</span>
+        </div>
+        <h3 class="card-title" style="--accent:#059669;">EasyJet预警上半年亏损，伊朗战争重创欧洲航空业</h3>
+        <ul class="bullets"><li>**业绩警告**：EasyJet宣布因伊朗战争引发的航线中断和旅客需求萎缩，预计上半财年将录得亏损，股价盘中跌幅创近四年之最</li><li>**行业冲击**：中东航线关闭迫使欧洲航空公司绕道飞行，导致燃油成本暴增，欧洲多家廉价航空已相继发出类似盈利预警</li><li>**消费信心**：旅游行业的困境将向酒店、目的地零售等相关消费领域传导，欧洲夏季旅游旺季的前景比此前预期更为悲观</li></ul>
+        <div class="card-footer">
+          <div class="tags"><span class="tag">EasyJet</span><span class="tag">航空业</span><span class="tag">伊朗战争冲击</span></div>
+          <span class="read-link">阅读原文 →</span>
+        </div>
+      </a>
+      </div>
+    </section>
+
+    <section class="domain-section" id="section-科技">
+      <div class="section-header" style="--accent:#7C3AED;--bg:#F5F3FF;">
+        <span class="section-dot" style="background:#7C3AED;"></span>
+        <h2 class="section-title">科技</h2>
+        <span class="section-count" style="color:#7C3AED;background:#F5F3FF;">7 条</span>
+      </div>
+      <div class="card-grid">
+        
+      <a class="card" href="https://api3.cls.cn/share/article/2346110?os=web&sv=8.4.6&app=CailianpressWeb" target="_blank" rel="noopener">
+        <div class="card-meta">
+          <span class="badge" style="background:#FFFBEB;color:#D97706;border-color:#FDE68A;">
+            <span class="dot" style="background:#F59E0B;"></span>P1 重要
+          </span>
+          <span class="source-label">财联社</span>
+        </div>
+        <h3 class="card-title" style="--accent:#7C3AED;">马斯克宣布：AI5芯片完成流片，将接替AI4成为特斯拉核心算力平台</h3>
+        <ul class="bullets"><li>**里程碑节点**：特斯拉下一代AI推理芯片AI5已完成流片，将成为自动驾驶FSD与擎天柱人形机器人的统一算力底座</li><li>**技术跃升**：AI5相比AI4预计在能效比和并行处理能力上大幅提升，进一步降低特斯拉机器人的边缘推理成本</li><li>**竞争格局**：特斯拉自研芯片路线如成功，将在具身智能领域摆脱对英伟达的依赖，形成硬件+软件+数据的完整闭环</li></ul>
+        <div class="card-footer">
+          <div class="tags"><span class="tag">特斯拉AI5</span><span class="tag">自研芯片</span><span class="tag">具身智能</span></div>
+          <span class="read-link">阅读原文 →</span>
+        </div>
+      </a>
+      <a class="card" href="https://www.qbitai.com/2026/04/401649.html" target="_blank" rel="noopener">
+        <div class="card-meta">
+          <span class="badge" style="background:#FFFBEB;color:#D97706;border-color:#FDE68A;">
+            <span class="dot" style="background:#F59E0B;"></span>P1 重要
+          </span>
+          <span class="source-label">量子位</span>
+        </div>
+        <h3 class="card-title" style="--accent:#7C3AED;">高德3个月斩获具身智能15项世界第一，首款四足机器人即将亮相</h3>
+        <ul class="bullets"><li>**成绩单**：高德（阿里达摩院机器人团队）过去3个月在具身智能领域累计拿下15项世界第一，涵盖运动控制、环境感知等核心技术</li><li>**产品落地**：首款四足机器人即将对外发布，这是高德从技术研究走向产品化的关键一步，意味着具身智能开始进入商业化冲刺阶段</li><li>**行业意义**：中国具身智能从追赶到局部领先，高德的成绩表明国内机器人基础技术已到达可商业化的临界点</li></ul>
+        <div class="card-footer">
+          <div class="tags"><span class="tag">高德机器人</span><span class="tag">具身智能</span><span class="tag">四足机器人</span></div>
+          <span class="read-link">阅读原文 →</span>
+        </div>
+      </a>
+      <a class="card" href="https://www.qbitai.com/2026/04/401705.html" target="_blank" rel="noopener">
+        <div class="card-meta">
+          <span class="badge" style="background:#FFFBEB;color:#D97706;border-color:#FDE68A;">
+            <span class="dot" style="background:#F59E0B;"></span>P1 重要
+          </span>
+          <span class="source-label">量子位</span>
+        </div>
+        <h3 class="card-title" style="--accent:#7C3AED;">智象未来完成超5亿元新一轮融资，全力打造下一代全模态世界模型</h3>
+        <ul class="bullets"><li>**融资规模**：智象未来宣布完成超5亿元新一轮战略融资，将全面投入下一代原生全模态世界模型的研发与工程化</li><li>**技术方向**：全模态世界模型意指同时处理视觉、语言、行动、感知等所有模态的统一大模型，是通往AGI的重要技术路径之一</li><li>**竞争格局**：此轮融资使智象未来跻身国内AI独角兽梯队，将与字节、百度等巨头直接竞争多模态AI市场</li></ul>
+        <div class="card-footer">
+          <div class="tags"><span class="tag">智象未来</span><span class="tag">全模态AI</span><span class="tag">大模型融资</span></div>
+          <span class="read-link">阅读原文 →</span>
+        </div>
+      </a>
+      <a class="card" href="https://techcrunch.com/2026/04/15/openai-updates-its-agents-sdk-to-help-enterprises-build-safer-more-capable-agents/" target="_blank" rel="noopener">
+        <div class="card-meta">
+          <span class="badge" style="background:#FFFBEB;color:#D97706;border-color:#FDE68A;">
+            <span class="dot" style="background:#F59E0B;"></span>P1 重要
+          </span>
+          <span class="source-label">TechCrunch</span>
+        </div>
+        <h3 class="card-title" style="--accent:#7C3AED;">OpenAI 更新 Agents SDK：为企业构建更安全、更强大的 AI 智能体</h3>
+        <ul class="bullets"><li>**更新重点**：OpenAI扩展了Agents SDK的核心能力，新增多项企业级安全护栏和智能体协作框架，让智能体在复杂任务中更可靠</li><li>**战略意义**：随着Agentic AI从概念走向大规模商业部署，OpenAI正加速构建B端生态壁垒，与Anthropic、Google竞争企业客户</li><li>**开发者影响**：新SDK降低了构建多智能体系统的门槛，同时提供更强的行为可解释性，预计将催生新一批AI原生企业应用</li></ul>
+        <div class="card-footer">
+          <div class="tags"><span class="tag">OpenAI</span><span class="tag">Agents SDK</span><span class="tag">企业AI</span></div>
+          <span class="read-link">阅读原文 →</span>
+        </div>
+      </a>
+      <a class="card" href="https://techcrunch.com/2026/04/15/amazon-backed-x-energy-files-to-raise-up-to-800m-in-ipo/" target="_blank" rel="noopener">
+        <div class="card-meta">
+          <span class="badge" style="background:#FFFBEB;color:#D97706;border-color:#FDE68A;">
+            <span class="dot" style="background:#F59E0B;"></span>P1 重要
+          </span>
+          <span class="source-label">TechCrunch</span>
+        </div>
+        <h3 class="card-title" style="--accent:#7C3AED;">亚马逊支持的核能初创 X-energy 正式启动 IPO，目标募资8亿美元</h3>
+        <ul class="bullets"><li>**上市规模**：X-energy正式启动路演，目标IPO融资最高8亿美元，将成为近年来最大的核能科技公司上市事件</li><li>**商业模式**：X-energy专注于小型模块化反应堆（SMR），亚马逊AWS已签署长期购电协议，为数据中心提供清洁能源</li><li>**行业转折**：此次IPO是AI算力爆发推动核电复兴的标志性事件，若成功上市，将吸引更多资本流向清洁能源核电赛道</li></ul>
+        <div class="card-footer">
+          <div class="tags"><span class="tag">核能IPO</span><span class="tag">X-energy</span><span class="tag">小型模块反应堆</span></div>
+          <span class="read-link">阅读原文 →</span>
+        </div>
+      </a>
+      <a class="card" href="https://www.theverge.com/policy/912689/live-nation-ticketmaster-antitrust-monopoly-trial-verdict" target="_blank" rel="noopener">
+        <div class="card-meta">
+          <span class="badge" style="background:#FFFBEB;color:#D97706;border-color:#FDE68A;">
+            <span class="dot" style="background:#F59E0B;"></span>P1 重要
+          </span>
+          <span class="source-label">The Verge</span>
+        </div>
+        <h3 class="card-title" style="--accent:#7C3AED;">联邦陪审团裁定 Ticketmaster 非法垄断，被强制分拆风险急剧上升</h3>
+        <ul class="bullets"><li>**裁决内容**：曼哈顿联邦陪审团在三项核心指控上均判定Live Nation-Ticketmaster构成非法垄断，裁决效力高于此前与司法部的和解协议</li><li>**市场影响**：Ticketmaster控制北美约70%大型演出票务市场，垄断裁决可能导致法院直接要求剥离核心业务，市值面临重大压缩</li><li>**行业意义**：这是美国近年最大的反垄断司法胜利之一，将为后续针对Meta、Google、苹果等科技巨头的反垄断诉讼提供有力先例</li></ul>
+        <div class="card-footer">
+          <div class="tags"><span class="tag">Ticketmaster</span><span class="tag">反垄断</span><span class="tag">强制分拆</span></div>
+          <span class="read-link">阅读原文 →</span>
+        </div>
+      </a>
+      <a class="card" href="https://36kr.com/p/3768320373441281?f=rss" target="_blank" rel="noopener">
+        <div class="card-meta">
+          <span class="badge" style="background:#EFF6FF;color:#2563EB;border-color:#BFDBFE;">
+            <span class="dot" style="background:#3B82F6;"></span>P2 关注
+          </span>
+          <span class="source-label">36氪</span>
+        </div>
+        <h3 class="card-title" style="--accent:#7C3AED;">攀峰智能完成数千万元天使轮融资，押注电商 Agent OS 赛道</h3>
+        <ul class="bullets"><li>**融资背景**：由前钉钉最年轻副总裁王铭创立的攀峰智能（K2 Lab）完成数千万元天使轮，由华控资本领投、云时资本跟投</li><li>**产品定位**：打造面向TikTok达人和商家的内容电商Agent OS——Moras，通过AI自动化完成选品、内容创作、投流等全链路操作</li><li>**赛道判断**：电商AI Agent是当前B2B AI落地最快的细分赛道之一，攀峰抢先布局TikTok电商，若模型跑通将有望快速规模化</li></ul>
+        <div class="card-footer">
+          <div class="tags"><span class="tag">AI Agent</span><span class="tag">电商自动化</span><span class="tag">天使融资</span></div>
+          <span class="read-link">阅读原文 →</span>
+        </div>
+      </a>
+      </div>
+    </section>
+
+    <section class="domain-section" id="section-政治">
+      <div class="section-header" style="--accent:#DC2626;--bg:#FEF2F2;">
+        <span class="section-dot" style="background:#DC2626;"></span>
+        <h2 class="section-title">政治</h2>
+        <span class="section-count" style="color:#DC2626;background:#FEF2F2;">2 条</span>
+      </div>
+      <div class="card-grid">
+        
+      <a class="card" href="https://wallstreetcn.com/livenews/3089097" target="_blank" rel="noopener">
+        <div class="card-meta">
+          <span class="badge" style="background:#FFFBEB;color:#D97706;border-color:#FDE68A;">
+            <span class="dot" style="background:#F59E0B;"></span>P1 重要
+          </span>
+          <span class="source-label">华尔街见闻</span>
+        </div>
+        <h3 class="card-title" style="--accent:#DC2626;">特朗普威胁制裁购买伊朗石油国家，中方强硬回应：反对非法单边制裁</h3>
+        <ul class="bullets"><li>**美方威胁**：特朗普公开表示相信中国不会停止购买伊朗石油，并宣布将对购买伊朗石油的国家实施制裁</li><li>**中方立场**：外交部发言人郭嘉昆明确表态，中方一贯反对没有国际法依据、未经联合国安理会授权的非法单边制裁</li><li>**博弈升级**：此举将中美在伊朗问题上的分歧从幕后推向台前，中美在石油制裁与供应链上的博弈将成为后续市场重要变量</li></ul>
+        <div class="card-footer">
+          <div class="tags"><span class="tag">中美博弈</span><span class="tag">伊朗石油</span><span class="tag">单边制裁</span></div>
+          <span class="read-link">阅读原文 →</span>
+        </div>
+      </a>
+      <a class="card" href="https://wallstreetcn.com/livenews/3089095" target="_blank" rel="noopener">
+        <div class="card-meta">
+          <span class="badge" style="background:#FFFBEB;color:#D97706;border-color:#FDE68A;">
+            <span class="dot" style="background:#F59E0B;"></span>P1 重要
+          </span>
+          <span class="source-label">华尔街见闻</span>
+        </div>
+        <h3 class="card-title" style="--accent:#DC2626;">中美就特朗普访华保持沟通，外交回暖信号值得关注</h3>
+        <ul class="bullets"><li>**外交信号**：外交部发言人确认，中美双方就特朗普访华事宜保持着积极沟通，为两国关系改善提供了想象空间</li><li>**背景解读**：在伊朗战争、贸易摩擦双重压力下，中美均有动力在外交上寻找缓冲，特朗普访华可能是一个重要的降温窗口</li><li>**市场影响**：若访华成行，将提振中美关系预期，利好A股、港股及人民币汇率，值得投资者持续跟踪</li></ul>
+        <div class="card-footer">
+          <div class="tags"><span class="tag">中美外交</span><span class="tag">特朗普访华</span><span class="tag">地缘缓和</span></div>
+          <span class="read-link">阅读原文 →</span>
+        </div>
+      </a>
+      </div>
+    </section>
+
+    <section class="domain-section" id="section-科学">
+      <div class="section-header" style="--accent:#0891B2;--bg:#ECFEFF;">
+        <span class="section-dot" style="background:#0891B2;"></span>
+        <h2 class="section-title">科学</h2>
+        <span class="section-count" style="color:#0891B2;background:#ECFEFF;">2 条</span>
+      </div>
+      <div class="card-grid">
+        
+      <a class="card" href="https://www.sciencedaily.com/releases/2026/04/260415042152.htm" target="_blank" rel="noopener">
+        <div class="card-meta">
+          <span class="badge" style="background:#FFFBEB;color:#D97706;border-color:#FDE68A;">
+            <span class="dot" style="background:#F59E0B;"></span>P1 重要
+          </span>
+          <span class="source-label">Science Daily</span>
+        </div>
+        <h3 class="card-title" style="--accent:#0891B2;">石墨烯挑战物理定律：科学家首次观测到近乎无摩擦的量子液态电子流</h3>
+        <ul class="bullets"><li>**突破性发现**：研究人员在石墨烯中首次观测到电子像无摩擦液体一样流动，这一量子态违背了描述正常电子行为的朱特-汤姆逊定律</li><li>**理论意义**：这种超流体电子态的发现，开辟了凝聚态物理的全新研究维度，为科学家理解量子材料的宏观行为提供了新工具</li><li>**应用前景**：若能在室温条件下稳定复现，这一特性可用于开发超低功耗芯片和量子计算组件，具有颠覆性的产业化潜力</li></ul>
+        <div class="card-footer">
+          <div class="tags"><span class="tag">石墨烯</span><span class="tag">量子物理</span><span class="tag">突破性发现</span></div>
+          <span class="read-link">阅读原文 →</span>
+        </div>
+      </a>
+      <a class="card" href="https://www.sciencedaily.com/releases/2026/04/260415043607.htm" target="_blank" rel="noopener">
+        <div class="card-meta">
+          <span class="badge" style="background:#EFF6FF;color:#2563EB;border-color:#BFDBFE;">
+            <span class="dot" style="background:#3B82F6;"></span>P2 关注
+          </span>
+          <span class="source-label">Science Daily</span>
+        </div>
+        <h3 class="card-title" style="--accent:#0891B2;">外星生命探测新思路：用多行星统计规律代替单一生物标志物</h3>
+        <ul class="bullets"><li>**研究创新**：新研究提出放弃逐行星排查的方式，转而在多颗行星之间寻找统计关联规律，把生命迹象视为跨空间的统计模式</li><li>**理论依据**：若生命可在行星间传播或改变行星环境，将在相邻行星上留下统计上相互关联的化学指纹，可被下一代望远镜识别</li><li>**实际价值**：当单颗行星生物标志物不够明确时，该方法仍能有效筛选候选行星，将大幅提升未来太空生命搜寻任务的命中率</li></ul>
+        <div class="card-footer">
+          <div class="tags"><span class="tag">外星生命</span><span class="tag">天体生物学</span><span class="tag">统计探测</span></div>
+          <span class="read-link">阅读原文 →</span>
+        </div>
+      </a>
+      </div>
+    </section>
+
+    <section class="domain-section" id="section-社会">
+      <div class="section-header" style="--accent:#EA580C;--bg:#FFF7ED;">
+        <span class="section-dot" style="background:#EA580C;"></span>
+        <h2 class="section-title">社会</h2>
+        <span class="section-count" style="color:#EA580C;background:#FFF7ED;">1 条</span>
+      </div>
+      <div class="card-grid">
+        
+      <a class="card" href="https://www.bloomberg.com/news/articles/2026-04-16/inditex-flags-contractor-data-leak-says-client-records-safe" target="_blank" rel="noopener">
+        <div class="card-meta">
+          <span class="badge" style="background:#EFF6FF;color:#2563EB;border-color:#BFDBFE;">
+            <span class="dot" style="background:#3B82F6;"></span>P2 关注
+          </span>
+          <span class="source-label">Bloomberg</span>
+        </div>
+        <h3 class="card-title" style="--accent:#EA580C;">Zara母公司Inditex遭承包商数据泄露，商业关系信息外泄</h3>
+        <ul class="bullets"><li>**事件经过**：Inditex披露其一家外部承包商遭黑客入侵，攻击者获取了与Zara等品牌相关的商业合作关系数据</li><li>**影响范围**：公司表示客户个人数据未受影响，但商业关系信息的泄露可能暴露供应商结构，引发竞争对手和黑市关注</li><li>**行业警示**：供应链数字化背景下第三方承包商成为数据安全最薄弱的环节，全球快时尚和零售行业需重新审视外包合规标准</li></ul>
+        <div class="card-footer">
+          <div class="tags"><span class="tag">Inditex</span><span class="tag">数据泄露</span><span class="tag">供应链安全</span></div>
+          <span class="read-link">阅读原文 →</span>
+        </div>
+      </a>
+      </div>
+    </section>
+</main>
+
+<!-- Footer -->
+<footer class="footer">
+  <strong>Daily-Pulse</strong> · 2026年04月16日 生成 · LA Time 04/16/2026 12:39 AM<br/>
+  数据来源：Reuters · BBC World · The Guardian · AP News · TechCrunch · The Verge · Bloomberg · Financial Times · Nature · Science Daily · 澎湃新闻 · 新浪国际
+</footer>
+
+</body>
+</html>
